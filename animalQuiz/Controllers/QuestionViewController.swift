@@ -15,7 +15,12 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var rangedSlider: UISlider!
+    @IBOutlet var rangedSlider: UISlider! {
+        didSet {
+            let answerCount = Float(currentAnswers.count - 1)
+            rangedSlider.value = answerCount
+        }
+    }
     
     @IBOutlet var singleButtons: [UIButton]!
     @IBOutlet var multipleSwitches: [UISwitch]!
@@ -25,7 +30,7 @@ class QuestionViewController: UIViewController {
     // MARK: Properties
     private let questions = Question.getQuestion() 
     private var questionIndex = 0
-    private var answerChosen: [Answer] = []
+    public var answerChosen: [Answer] = []
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
