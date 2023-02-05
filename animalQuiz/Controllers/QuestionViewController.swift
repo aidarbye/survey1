@@ -7,6 +7,8 @@
 
 import UIKit
 
+var answerChosen: [Answer] = []
+
 class QuestionViewController: UIViewController {
     
     @IBOutlet var rangeStackView: UIStackView!
@@ -30,7 +32,6 @@ class QuestionViewController: UIViewController {
     // MARK: Properties
     private let questions = Question.getQuestion() 
     private var questionIndex = 0
-    public var answerChosen: [Answer] = []
     private var currentAnswers: [Answer] {
         questions[questionIndex].answers
     }
